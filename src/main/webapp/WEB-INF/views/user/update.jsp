@@ -22,7 +22,7 @@
 			<!--프로필셋팅 아이디영역end-->
 
 			<!--프로필 수정-->
-			<form id="profileUpdate"">
+			<form id="profileUpdate">
 				<div class="content-item__02">
 					<div class="item__title">이름</div>
 					<div class="item__input">
@@ -40,7 +40,7 @@
 				<div class="content-item__04">
 					<div class="item__title">패스워드</div>
 					<div class="item__input">
-						<input type="password" name="password" placeholder="패스워드"  />
+						<input type="password" name="password" placeholder="패스워드" />
 					</div>
 				</div>
 				<div class="content-item__05">
@@ -73,7 +73,7 @@
 				<div class="content-item__09">
 					<div class="item__title">전회번호</div>
 					<div class="item__input">
-						<input type="text" name="tel" placeholder="전화번호"
+						<input type="text" name="phone" placeholder="전화번호"
 							value="${principal.user.phone}" />
 					</div>
 				</div>
@@ -88,7 +88,7 @@
 				<div class="content-item__11">
 					<div class="item__title"></div>
 					<div class="item__input">
-						<button>제출</button>
+						<button type="button" onclick="update(${principal.user.id})">제출</button>
 					</div>
 				</div>
 				<!--제출버튼end-->

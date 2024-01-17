@@ -12,7 +12,7 @@ public class UserController {
 
 	@GetMapping("/user/{id}")
 	public String profile(@PathVariable int id) {
-		return "/user/profile";
+		return "user/profile";
 	}
 	
 	// AuthenticationPrincipal "Authentication에 바로 접근해준다" 
@@ -27,6 +27,6 @@ public class UserController {
 		
 		// Header에 시큐리티 태그 라이브러리를 사용해서 전달하는 방법으로 대체
 		// model.addAttribute("principal", principalDetails.getUser());
-		return "/user/update";
+		return "user/update";
 	}
 }
