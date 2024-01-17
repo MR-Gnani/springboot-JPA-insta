@@ -25,6 +25,8 @@ public class UserController {
 		// PrincipalDetails mPrincipalDetails = (PrincipalDetails) auth.getPrincipal();
 		// System.out.println(mPrincipalDetails.getUser());
 		
+		// Header에 시큐리티 태그 라이브러리를 사용해서 전달하는 방법으로 대체
+		// model.addAttribute("principal", principalDetails.getUser());
 		return "/user/update";
 	}
 }
