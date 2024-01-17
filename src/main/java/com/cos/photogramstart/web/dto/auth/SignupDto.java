@@ -1,4 +1,4 @@
-package com.cos.photogramstart.config.web.dto.auth;
+package com.cos.photogramstart.web.dto.auth;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

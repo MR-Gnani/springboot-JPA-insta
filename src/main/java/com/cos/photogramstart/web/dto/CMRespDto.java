@@ -1,4 +1,4 @@
-package com.cos.photogramstart.config.web.dto;
+package com.cos.photogramstart.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
