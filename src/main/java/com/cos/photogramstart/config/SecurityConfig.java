@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		// 인증이 되지 않은 사용자는 모두 login페이지로 이동시킬 예정.
 		http.authorizeRequests()
-			.antMatchers("/", "/user/**", "/image/**", "/subscribe/**", "/comment/**").authenticated() //앞의 주소는 인증을해라
+			.antMatchers("/", "/user/**", "/image/**", "/subscribe/**", "/comment/**", "/api/**").authenticated() //앞의 주소는 인증을해라
 			.anyRequest().permitAll() // 이외의 주소는 허용해주겠다.
 			.and()
 			.formLogin() // 그리고 전자의 주소로 올경우 	
