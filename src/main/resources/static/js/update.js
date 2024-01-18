@@ -15,7 +15,11 @@ function update(userId, event) {
 		console.log("성공", res); // HttpStatus 상태코드가 200번대 일때 - done
 		location.href = `/user/${userId}`;
 	}).fail(error=>{
-		alert(JSON.stringify(error.reponseJSON.data));
+		if(error.data == null) {
+			alert(error.responseJSON.message)
+		} else {
+			alert(JSON.stringify(error.reponseJSON.data));
+		}
 		// console.log("실패", error.reponseJSON.data); // HttpStatus 상태코드가 200번대가 아닐때 - fail
 	});
 	
