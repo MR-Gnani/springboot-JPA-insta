@@ -11,13 +11,32 @@
  */
 
 // (1) 유저 프로파일 페이지 구독하기, 구독취소
-function toggleSubscribe(obj) {
+function toggleSubscribe(toUserId, obj) {
 	if ($(obj).text() === "팔로우취소") {
-		$(obj).text("팔로잉");
-		$(obj).toggleClass("blue");
+		
+		$.ajax({
+			type: "delete",
+			url: "/api/subscribe/"+toUserId,
+			dataType: "json"
+		}).done(res=> { 
+			$(obj).text("팔로잉");
+			$(obj).toggleClass("blue");			
+		}).fail(error=> {
+			console.log("팔로우취소실패", error);
+		});
+
 	} else {
-		$(obj).text("팔로우취소");
-		$(obj).toggleClass("blue");
+		
+		$.ajax({
+			type: "post",
+			url: "/api/subscribe/"+toUserId,
+			dataType: "json"
+		}).done(res=> { 
+			$(obj).text("팔로우취소");
+			$(obj).toggleClass("blue");			
+		}).fail(error=> {
+			console.log("팔로우실패", error);
+		});
 	}
 }
 
