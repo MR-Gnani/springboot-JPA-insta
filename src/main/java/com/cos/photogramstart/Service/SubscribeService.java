@@ -15,7 +15,7 @@ public class SubscribeService {
 	private final SubscribeRepository subscribeRepository;
 	
 	@Transactional
-	public void 구독하기(int fromUserId, int toUserId) {
+	public void 팔로우하기(int fromUserId, int toUserId) {
 		try {
 			subscribeRepository.mSubscirbe(fromUserId, toUserId);
 		} catch (Exception e) {
@@ -24,7 +24,7 @@ public class SubscribeService {
 	}
 	
 	@Transactional
-	public void 구독취소하기(int fromUserId, int toUserId) {
+	public void 팔로우취소하기(int fromUserId, int toUserId) {
 		subscribeRepository.mUnSubscribe(fromUserId, toUserId);
 	}
 }
