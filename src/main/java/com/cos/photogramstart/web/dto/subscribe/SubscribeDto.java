@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class SubscribeDto {
 	
+	// mariaDB는 Integer사용 가능, MySQL작업시 BigInteger사용해야함
 	private int Id;
 	private String username;
 	private String profileImageUrl;

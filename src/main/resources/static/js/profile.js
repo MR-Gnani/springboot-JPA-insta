@@ -41,12 +41,46 @@ function toggleSubscribe(toUserId, obj) {
 }
 
 // (2) 구독자 정보  모달 보기
-function subscribeInfoModalOpen() {
+function subscribeInfoModalOpen(pageUserId) {
 	$(".modal-subscribe").css("display", "flex");
+	
+	$.ajax({
+		url: `/api/user/${pageUserId}/subscribe`,
+		dataType: "json"
+	}).done(res=>{
+		console.log(res.data);
+		
+		res.data.forEach((u)=>{
+			let item = getSubscribeModalItem(u);
+			$("#subscribeModalList").append(item);
+		});
+	}).fail(error=>{
+		console.log("팔로잉정보불러오기오류", error);
+	});
 }
 
-function getSubscribeModalItem() {
-
+function getSubscribeModalItem(u) {
+	console.log(u);
+	let item = `<div class="subscribe__item" id="subscribeModalItem-${u.id}">
+	<div class="subscribe__img">
+		<img src="/images/person.jpeg" onerror="this.src='/images/person.jpeg'"/>
+	</div>
+	<div class="subscribe__text">
+		<h2>${u.username}</h2>
+	</div>
+	<div class="subscribe__btn">`;
+	
+	if(!u.equalUserState){ // 동일유저가 아닐 때 버튼 생성
+		if(u.subscribeState){ // 팔로우되어 있으면 
+			item+=`<button class="cta blue" onclick="toggleSubscribeModal(this)">팔로우취소</button>`;
+		}else{ // 팔로우가 안되어 있으면
+			item+=`<button class="cta" onclick="toggleSubscribeModal(this)">팔로잉</button>`;
+		}
+	}
+	item+=`
+	</div>
+</div>`;
+	return item;
 }
 
 
