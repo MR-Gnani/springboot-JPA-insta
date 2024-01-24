@@ -39,6 +39,13 @@ public class UserService {
 		
 		dto.setSubscribeState(subscribeState == 1);
 		dto.setSubscribeCount(subscribeCount);
+		
+		// 좋아요 갯수 카운트
+		// profile.jsp 파일에서 images.likes.size() 를 사용해도 되지만 서버에서 다 계산해서 가져가는 것이 좋다.
+		userEntity.getImages().forEach((image->{
+			image.setLikeCount(image.getLikes().size());
+		}));
+		
 		return dto;
 	}
 	
