@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.photogramstart.Service.UserService;
 import com.cos.photogramstart.config.auth.PrincipalDetails;
-import com.cos.photogramstart.domain.user.User;
 import com.cos.photogramstart.web.dto.user.UserProfileDto;
 
 import lombok.RequiredArgsConstructor;

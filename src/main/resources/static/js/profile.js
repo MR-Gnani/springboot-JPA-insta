@@ -84,9 +84,20 @@ function getSubscribeModalItem(u) {
 }
 
 // (3) 유저 프로파일 사진 변경 (완)
-function profileImageUpload() {
+function profileImageUpload(pageUserId, principalId) {
+	
+	// console.log("pageUserId", pageUserId);
+	// console.log("principalId", principalId);
+	
+	// 다른 프로필 유저의 사진을 클릭했을때 프로필 변경 못하게 하는것
+	// 하지만 내생각에는 애초에 다른 회원의 프로필을 클릭했을 때 변경 모달을 호출 시키지 않고 사진만 응답시키고 싶음
+	if(pageUserId != principalId){
+		alert("프로필 사진을 수정할 수 없는 유저입니다.")
+		return;
+	}
+	
 	$("#userProfileImageInput").click();
-
+	
 	$("#userProfileImageInput").on("change", (e) => {
 		let f = e.target.files[0];
 
@@ -95,12 +106,30 @@ function profileImageUpload() {
 			return;
 		}
 
-		// 사진 전송 성공시 이미지 변경
-		let reader = new FileReader();
-		reader.onload = (e) => {
-			$("#userProfileImage").attr("src", e.target.result);
-		}
-		reader.readAsDataURL(f); // 이 코드 실행시 reader.onload 실행됨.
+		// 서버에 이미지를 전송
+		let profileImageForm = $("#userProfileImageForm")[0];
+		
+		// FormData 객체를 이용하면 form태그 필드와 그 값을 나타내는 key/value 쌍을 담을 수 있다.
+		let formData = new FormData(profileImageForm);
+		
+		$.ajax({
+			type: "put",
+			url: `/api/user/${principalId}/profileImageUrl`,
+			data: formData,
+			contentType: false, //필수 x-www-form-urlencoded로 파싱되는 것을 방지
+			processData: false, //필수 contentType를 false로 주면 QueryString으로 설정되는데 이것도 방지
+			enctype:  "multipart/form-data",
+			dataType: "json"
+		}).done(res=>{
+			// 사진 전송 성공시 이미지 변경
+			let reader = new FileReader();
+			reader.onload = (e) => {
+				$("#userProfileImage").attr("src", e.target.result);
+				}
+			reader.readAsDataURL(f); // 이 코드 실행시 reader.onload 실행됨.
+		}).fail(error=>{
+			console.log("오류", error);
+		});
 	});
 }
 
