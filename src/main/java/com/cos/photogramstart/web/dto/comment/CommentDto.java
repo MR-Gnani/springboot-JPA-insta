@@ -12,5 +12,5 @@ public class CommentDto {
 	private String content;
 	
 	@NotNull
-	private int imageId;
+	private Integer imageId;
 }
