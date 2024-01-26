@@ -34,7 +34,17 @@ spring:
   security:
     user:
       name: test
-      password: 1234   
+      password: 1234  
+      
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 398833226148183
+            client-secret: 232f1d9cd43c5266924a435dd0ffbccf
+            scope:
+            - public_profile
+            - email
 
 file:
   path: /Users/nani/workspace_nani/upload/

@@ -33,7 +33,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략
 	private int id;
 	
-	@Column(length = 100,  unique = true)
+	@Column(length = 100,  unique = true) // oauth로그인 때문에 100자로 설정
 	private String username;
 	@Column(nullable = false)
 	private String password;
