@@ -1,17 +1,11 @@
 # 포토그램 - 인스타그램 클론 코딩
 
-### STS 툴 버그가 발견되면 다른 버전으로 다운 받는 법
-- https://github.com/spring-projects/sts4/wiki/Previous-Versions
-
-### STS 툴에 세팅하기 - 플러그인 설정 (JSP, Javascript)
-- https://blog.naver.com/getinthere/222322821611
-
-### 의존성
+## 의존성
 
 - Sring Boot DevTools
 - Lombok
 - Spring Data JPA
-- MariaDB Driver
+- MySQL DB Driver
 - Spring Security
 - Spring Web
 - oauth2-client
@@ -37,15 +31,15 @@
 </dependency>
 ```
 
-### 데이터베이스
+## 데이터베이스
 
 ```sql
-create user 'cos'@'%' identified by 'cos1234';
-GRANT ALL PRIVILEGES ON *.* TO 'cos'@'%';
-create database photogram;
+create user 'nani'@'%' identified by 'nani1234';
+GRANT ALL PRIVILEGES ON *.* TO 'nani'@'%';
+create database insta;
 ```
 
-### yml 설정
+## yml 설정
 
 ```yml
 server:
@@ -63,10 +57,10 @@ spring:
       suffix: .jsp
       
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/photogram?serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false
-    username: cos
-    password: cos1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/insta?serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false
+    username: nani
+    password: nani1234
     
   jpa:
     open-in-view: true
@@ -87,10 +81,10 @@ spring:
       password: 1234   
 
 #file:
-#  path: C:/src/springbootwork-sts/upload/
+#  path: /Users/nani/workspace_nani/upload/
 ```
 
-### 태그라이브러리
+## 태그라이브러리
 
 ```jsp
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
