@@ -173,7 +173,7 @@ function addComment(imageId) {
 	if (data.content === "") {
 		alert("댓글을 작성해주세요!");
 		return;
-	} 
+	}
 	
 	$.ajax({
 		type: "post",
@@ -199,6 +199,7 @@ function addComment(imageId) {
 		
 	}).fail(error=>{
 		console.log("오류", error.responseJSON.data.content);
+		alert(error.responseJSON.data.content);
 	});
 	
 	commentInput.val("");  // 인풋필드 비워줌

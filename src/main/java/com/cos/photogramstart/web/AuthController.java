@@ -51,20 +51,11 @@ public class AuthController {
 	// Controller에서 ResponseBody 어노테이션을 사용하면 데이터 리턴이 가능하다. 
 	public String signup(@Valid SignupDto signupDto, BindingResult bindingResult) { // key=value(x-www-form-urlencoded)
 		
-		if(bindingResult.hasErrors()) {
-			Map<String, String> errorMap = new HashMap<>();
-			
-			for(FieldError error : bindingResult.getFieldErrors()) {
-				errorMap.put(error.getField(), error.getDefaultMessage());
-			}
-			throw new CustomValidationException("유효성 검사 실패", errorMap);
-		} else {
 			// User <-- SignupDto
 			User user = signupDto.toEntity();
 			// log.info(user.toString());
-			User userEntity = authService.회원가입(user);
-			System.out.println(userEntity);
+			authService.회원가입(user);
+			
 			return "auth/signin"; // 회원가입이 진행되면 로그인창으로 이동
 		}
-	}
 }
