@@ -37,7 +37,7 @@ function getStoryItem(image) {
 			<img class="profile-image" src="/upload/${image.user.profileImageUrl}"
 				onerror="this.src='/images/person.jpeg'" />
 		</div>
-		<div>${image.user.username}</div>
+		<div class="user-username" onclick="goToUserProfile(${image.user.id})">${image.user.username}</div>
 	</div>
 
 	<div class="sl__item__img">
@@ -70,7 +70,7 @@ function getStoryItem(image) {
 			image.comments.forEach((comment)=>{
 				item+=`<div class="sl__item__contents__comment" id="storyCommentItem-${comment.id}">
 				<p>
-					<b>${comment.user.username} :</b> ${comment.content}.
+					<b><span class="user-username" onclick="goToUserProfile(${comment.user.id})">${comment.user.username}</span> :</b> ${comment.content}.
 				</p>`;
 
 				if(principalId == comment.user.id){
@@ -112,7 +112,13 @@ $(window).scroll(() => {
 	}
 });
 
-
+function goToUserProfile(userId) {
+ 
+  let userProfileUrl = `/user/${userId}`;
+  
+  // 프로필 페이지로 이동
+  window.location.href = userProfileUrl;
+}
 // (3) 좋아요, 안좋아요
 function toggleLike(imageId) {
 	let likeIcon = $(`#storyLikeIcon-${imageId}`);
