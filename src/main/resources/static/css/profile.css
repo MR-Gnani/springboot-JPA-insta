@@ -308,6 +308,129 @@
   border-bottom: 1px solid #dbdbdb;
 }
 
+.modal-contents {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-contents .contents {
+  width: 1000px;
+  height: 600px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-contents .contents .contents-header {
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+.modal-contents .contents .contents-header button {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background-color: transparent;
+  border: 0;
+}
+
+.modal-contents .contents .contents-header button i {
+font-size: 20px;
+  color: black;
+}
+
+.modal-contents .contents .contents-body {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.modal-contents .contents .contents-body .contents-photo {
+}
+
+.modal-contents .contents .contents-body .contents-photo img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.modal-contents .contents .contents-body .contents-details {
+  flex: 1;
+  padding: 10px;
+  color: black;
+  overflow-y: auto;
+}
+
+.modal-contents .contents .contents-body .contents-details .post-content {
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  padding: 0 15px;
+  margin-bottom: 5px;
+}
+
+.modal-contents .contents .contents-body .contents-details .comment {
+   justify-content: space-between;
+  align-items: flex-start;
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  padding: 0 15px;
+  margin-bottom: 5px;
+}
+
+.modal-contents .contents .contents-body .contents-details .comments-icon {
+  height: 40px;
+  padding: 5px 0;  
+}
+
+.modal-contents .contents .contents-body .contents-details .comments-icon button {
+  background-color: transparent;
+  width: 40px;
+  font-size: 25px;
+  border: 0;
+  cursor: pointer;
+}
+
+.modal-contents .contents .contents-body .contents-details .comments-icon button:first-child .active {
+	color: red;
+}
+
+.modal-contents .contents .contents-body .contents-details .comments-input {
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+}
+
+.modal-contents .contents .contents-body .contents-details .comments-input input{
+  flex: 9;
+  height: 56px;
+  border: 0;
+  padding-left: 15px;
+}
+
+.modal-contents .contents .contents-body .contents-details .comments-input button {
+  flex: 1;
+  height: 56px;
+  border: 0;
+  background-color: transparent;
+  font-weight: 500;
+  color: #0095f6;
+  font-size: 14px;
+}
+
 .modal-subscribe {
   position: fixed;
   top: 0;

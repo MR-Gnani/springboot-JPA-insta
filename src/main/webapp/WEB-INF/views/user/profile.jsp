@@ -27,7 +27,7 @@
 		<div class="profile-right">
 			<div class="name-group">
 				<h2>${dto.user.name}</h2>
-				
+				<a href="javascript:contentsModalOpen();"><span> 테스트 </span></a>
 				<c:choose>
 					<c:when test="${dto.pageOwnerState}">
 						<button class="cta" onclick="location.href='/image/upload'">사진등록</button>
@@ -45,10 +45,6 @@
 						
 					</c:otherwise>
 				</c:choose>
-				
-				<button class="modi" onclick="popup('.modal-info')">
-					<i class="fas fa-cog"></i>
-				</button>
 			</div>
 
 			<div class="subscribe">
@@ -119,6 +115,7 @@
 
 <!--프로필사진 바꾸기 모달end-->
 
+<!--  구독정보 모달 -->
 <div class="modal-subscribe">
 	<div class="subscribe">
 		<div class="subscribe-header">
@@ -127,16 +124,58 @@
 				<i class="fas fa-times"></i>
 			</button>
 		</div>
-
 		<div class="subscribe-list" id="subscribeModalList">
-
-
-
 		</div>
 	</div>
-
 </div>
 
+<!-- 게시글 contents 모달 -->
+<div class="modal-contents">
+	<div class="contents">
+			<!-- 헤더 영억 -->
+			<div class="contents-header">
+				<span> Username </span>
+				<button onclick="modalClose()">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			
+			<!-- 바디 영역 -->
+			<div class="contents-body">
+			
+				<!-- 왼쪽 사진 영역 -->
+				<div class="contents-photo">
+				  
+				<img src="/images/person.jpeg" >
+				</div>
+					
+				<!-- 오른쪽 내용 영역 -->
+				<div class="contents-details">
+				
+					<div class="post-content">
+						<p>Your post content goes here...</p>
+					</div>
+					
+					<div class="comment">
+						<p>Comment 1</p>
+					</div>
+					        
+					<div class="comments-icon">
+						<button>
+							<i class="fas fa-heart active"  id="contentsLikeIcon-1" onclick="toggleLike()"></i>
+						</button>
+					</div>
+					
+					<span class="like"><b id="contentsLikeCount-1">3 </b>likes</span>
+					        
+					<div class="comments-input">
+						<input type="text" placeholder="댓글 달기..." id="CommentsInput-${image.id}" />
+						<button type="button" onClick="addComment(${image.id})">게시</button>
+					</div>			
+				</div>
+		</div>
+	</div>
+</div>
 
 <script src="/js/profile.js"></script>
 

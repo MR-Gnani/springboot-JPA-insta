@@ -52,6 +52,9 @@
 					<li class="navi-item"><a href="/user/${principal.user.id}">
 							<i class="far fa-user"></i>
 						</a></li>
+					<li class= "navi-item"><a onclick="popup('.modal-info')">
+							<i class="fas fa-cog"></i>
+						</a></li>
 				</ul>
 			</nav>
 		</div>

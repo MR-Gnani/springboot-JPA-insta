@@ -40,6 +40,25 @@ function toggleSubscribe(toUserId, obj) {
 	}
 }
 
+// 게시글 상세 창 보기
+function contentsModalOpen() {
+	$(".modal-contents").css("display", "flex");
+}
+
+$.ajax({
+	url: ``
+}).done(res=>{
+	
+}).fail(error=>{
+	
+})
+
+function getContentsModalItem() {
+	let item=``
+}
+
+
+
 // (2) 구독자 정보  모달 보기
 function subscribeInfoModalOpen(pageUserId) {
 	$(".modal-subscribe").css("display", "flex");
@@ -66,7 +85,7 @@ function getSubscribeModalItem(u) {
 		<img src="/upload/${u.profileImageUrl}" onerror="this.src='/images/person.jpeg'"/>
 	</div>
 	<div class="subscribe__text">
-		<h2>${u.username}</h2>
+		<h2><span class="user-username" onclick="goToUserProfile(${u.id})">${u.username}</span></h2>
 	</div>
 	<div class="subscribe__btn">`;
 	
@@ -81,6 +100,14 @@ function getSubscribeModalItem(u) {
 	</div>
 </div>`;
 	return item;
+}
+
+// 유저 프로필 페이지로 이동
+function goToUserProfile(userId) {
+ 
+  let userProfileUrl = `/user/${userId}`;
+  
+  window.location.href = userProfileUrl;
 }
 
 // (3) 유저 프로파일 사진 변경 (완)
@@ -145,8 +172,10 @@ function closePopup(obj) {
 
 
 // (5) 사용자 정보(회원정보, 로그아웃, 닫기) 모달
-function modalInfo() {
-	$(".modal-info").css("display", "none");
+function modalInfo(pageUserId, principalId) {
+		console.log("pageUserId", pageUserId);
+	    console.log("principalId", principalId);
+		$(".modal-info").css("display", "none");
 }
 
 // (6) 사용자 프로파일 이미지 메뉴(사진업로드, 취소) 모달
