@@ -10,6 +10,10 @@
   (8) 구독자 정보 모달 닫기
  */
 
+// (0) 현재 로그인한 사용자 아이디
+let principalId = $("#principalId").val();
+console.log(principalId);
+
 // (1) 유저 프로파일 페이지 구독하기, 구독취소
 function toggleSubscribe(toUserId, obj) {
 	if ($(obj).text() === "팔로우취소") {
@@ -80,19 +84,20 @@ function getContentsModalItem(image) {
 				
 					<div class="post-content">
 						<p>${image.caption}</p>
-					</div>`;
+					</div>
+					<div class="commentList">`;
 					
 					image.comments.forEach((comment)=>{
 						item+=`
 					<div class="comment" id="contentsCommentItem-${comment.id}">
 						<p> 
 							<b><span class="user-username">${comment.user.username}</span> :</b> ${comment.content}.
-						</p>`;
+						`;
 					
 						if(principalId == comment.user.id){
 							item+= `<button onclick="deleteComment(${comment.id})">
 										  <i class="fas fa-times"></i>
-										  </button>`;
+										  </button></p>`;
 							}
 				
 						item+= `
@@ -101,7 +106,8 @@ function getContentsModalItem(image) {
 					});
 					
 					item+=
-					`<div class="comments-icon">
+					`</div>
+					<div class="comments-icon">
 						<button>`;
 						
 							if(image.likeState){
@@ -114,7 +120,7 @@ function getContentsModalItem(image) {
 						</button>
 					</div>
 					
-					<span class="like"><b id="contentsLikeCount-${image.id}">${image.likeCount} </b>likes</span>
+					<span class="like"><b id="storyLikeCount-${image.id}">${image.likeCount} </b> likes</span>
 					        
 					<div class="comments-input">
 						<input type="text" placeholder="댓글 달기..." id="CommentsInput-${image.id}" />
@@ -172,6 +178,66 @@ function toggleLike(imageId) {
 	}
 }
 
+// (4) 댓글쓰기
+function addComment(imageId) {
+
+	let commentInput = $(`#CommentsInput-${imageId}`);
+	let commentList = $(`#commentList-${imageId}`);
+
+	let data = {
+		imageId:  imageId,
+		content: commentInput.val()
+	}
+
+	if (data.content === "") {
+		alert("댓글을 작성해주세요!");
+		return;
+	}
+	
+	$.ajax({
+		type: "post",
+		url: "/api/comment",
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json"
+	}).done(res=>{
+		// console.log("성공", res);
+		
+			let comment = res.data;
+		
+			let content = `
+			  <div class="comment" id="contentsCommentItem-${comment.id}"> 
+			    <p>
+			      <b>${comment.user.username}</b>${comment.content}
+			    </p>	    
+			    <button onclick="deleteComment(${comment.id})"><i class="fas fa-times"></i></button>   
+			  </div>
+			`;
+			commentList.prepend(content);
+		
+	}).fail(error=>{
+		console.log("오류", error.responseJSON.data.content);
+		alert(error.responseJSON.data.content);
+	});
+	
+	commentInput.val("");  // 인풋필드 비워줌
+}
+
+// (5) 댓글 삭제
+function deleteComment(commentId) {
+	
+	$.ajax({
+		type: "delete",
+		url: `/api/comment/${commentId}`,
+		dataType: "json"
+	}).done(res=>{
+		console.log("성공");
+		$(`#contentsCommentItem-${commentId}`).remove();
+		
+	}).fail(error=>{
+		console.log("실패", error);
+	});
+}
 
 // (2) 구독자 정보  모달 보기
 function subscribeInfoModalOpen(pageUserId) {

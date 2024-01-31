@@ -346,7 +346,7 @@
 }
 
 .modal-contents .contents .contents-header button i {
-font-size: 20px;
+  font-size: 20px;
   color: black;
 }
 
@@ -395,10 +395,12 @@ font-size: 20px;
   overflow-y: auto;
 }
 
-.modal-contents .contents .contents-body .contents-details .comment button {
-	border: none; 
-	color: blcak;
-	outline: none; background: #fff; cursor: pointer;
+.modal-contents .contents .contents-body .contents-details .commentList .comment button {
+ border: none; 
+ outline: none; 
+ background: #fff;
+ float: right;
+ cursor: pointer;
 }
 
 .modal-contents .contents .contents-body .contents-details .comments-icon {
