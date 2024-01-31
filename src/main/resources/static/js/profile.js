@@ -41,20 +41,21 @@ function toggleSubscribe(toUserId, obj) {
 }
 
 // 게시글 상세 창 보기
-function contentsModalOpen() {
+function contentsModalOpen(imageId) {
 	$(".modal-contents").css("display", "flex");
+	
+	$.ajax({
+		url: `/api/user/${imageId}/contents`,
+		dataType: "json"
+	}).done(res=>{
+		console.log(res);
+		let image = res.data;
+		let contentsItem = getContentsModalItem(image);
+		$("#contentsModalList").append(contentsItem);
+	}).fail(error=>{
+		console.log("오류", error);
+	}); 
 }
-
-$.ajax({
-	url: `/api/user/{imageId}/contents`,
-	dataType: "json"
-}).done(res=>{
-	console.log(res);
-	let contentsItem = getContentsModalItem(image);
-	$("contentsModalList").append(contentsItem)
-}).fail(error=>{
-	console.log("오류", error);
-})
 
 function getContentsModalItem(image) {
 	let item=`			
@@ -71,37 +72,105 @@ function getContentsModalItem(image) {
 				
 				<div class="contents-photo">
 				  
-				<img src="/images/person.jpeg" >
+				<img src="/upload/${image.postImageUrl}" />
 				</div>
 					
 				
 				<div class="contents-details">
 				
 					<div class="post-content">
-						<p>Your post content goes here...</p>
-					</div>
+						<p>${image.caption}</p>
+					</div>`;
 					
-					<div class="comment">
-						<p>Comment 1</p>
-					</div>
-					        
-					<div class="comments-icon">
-						<button>
-							<i class="fas fa-heart active"  id="contentsLikeIcon-1" onclick="toggleLike()"></i>
+					image.comments.forEach((comment)=>{
+						item+=`
+					<div class="comment" id="contentsCommentItem-${comment.id}">
+						<p> 
+							<b><span class="user-username">${comment.user.username}</span> :</b> ${comment.content}.
+						</p>`;
+					
+						if(principalId == comment.user.id){
+							item+= `<button onclick="deleteComment(${comment.id})">
+										  <i class="fas fa-times"></i>
+										  </button>`;
+							}
+				
+						item+= `
+						</div>`;
+						
+					});
+					
+					item+=
+					`<div class="comments-icon">
+						<button>`;
+						
+							if(image.likeState){
+								item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
+							}else{
+								item += `<i class="far fa-heart " id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
+							}
+							
+					item +=`
 						</button>
 					</div>
 					
-					<span class="like"><b id="contentsLikeCount-1">3 </b>likes</span>
+					<span class="like"><b id="contentsLikeCount-${image.id}">${image.likeCount} </b>likes</span>
 					        
 					<div class="comments-input">
 						<input type="text" placeholder="댓글 달기..." id="CommentsInput-${image.id}" />
 						<button type="button" onClick="addComment(${image.id})">게시</button>
-					</div>			
+					</div>
+					
 				</div>
 		</div>`
 		return item;
 }
 
+// +좋아요
+function toggleLike(imageId) {
+	let likeIcon = $(`#storyLikeIcon-${imageId}`);
+	
+	if (likeIcon.hasClass("far")) { //좋아요가 안된 상태, 좋아요 누르겠다.
+		
+		$.ajax({
+			type: "post",
+			url: `/api/image/${imageId}/likes`,
+			dataType: "json"
+		}).done(res=>{
+			
+			let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
+			let likeCount = Number(likeCountStr) + 1;
+			console.log("좋아카운트", likeCount);
+			$(`#storyLikeCount-${imageId}`).text(likeCount);
+			
+			likeIcon.addClass("fas");
+			likeIcon.addClass("active");
+			likeIcon.removeClass("far");
+		}).fail(error=>{
+			console.log("오류", error);
+		});
+		
+	} else { //좋아요가 된 상태, 좋아요 취소하겠다.
+		
+		$.ajax({
+			type: "delete",
+			url: `/api/image/${imageId}/likes`,
+			dataType: "json"
+		}).done(res=>{
+					
+			let likeCountStr = $(`#storyLikeCount-${imageId}`).text();
+			let likeCount = Number(likeCountStr) - 1;
+			console.log("좋아카운트", likeCount);
+			$(`#storyLikeCount-${imageId}`).text(likeCount);
+			
+			likeIcon.removeClass("fas");
+			likeIcon.removeClass("active");
+			likeIcon.addClass("far");
+		}).fail(error=>{
+			console.log("오류", error);
+		});
+	}
+}
 
 
 // (2) 구독자 정보  모달 보기

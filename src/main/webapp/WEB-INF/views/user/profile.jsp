@@ -76,7 +76,7 @@
 				<!--아이템들-->
 				<!-- EL표현식에서 변수명을 적으면 get함수가 자동 호출 -->
 			<c:forEach var="image" items="${dto.user.images}">
-				<div class="img-box" onclick="popup('.modal-contents')">
+				<div class="img-box" onclick="contentsModalOpen(${image.id})">
 					<a href="">
 					<img src="/upload/${image.postImageUrl}" />
 					</a>

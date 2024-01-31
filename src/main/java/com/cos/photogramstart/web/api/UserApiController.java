@@ -36,7 +36,8 @@ public class UserApiController {
 	
 	@GetMapping("/api/user/{imageId}/contents")
 	public ResponseEntity<?> contents(@PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		Image images = imageService.게시글상세보기(imageId);
+		Image images = imageService.게시글상세보기(imageId, principalDetails.getUser().getId());
+		System.out.println("나 잘받아오니?");
 		return new ResponseEntity<>(new CMRespDto<>(1, "성공", images), HttpStatus.OK);
 	}
 	

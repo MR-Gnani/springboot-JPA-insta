@@ -48,7 +48,7 @@ public class SubscribeService {
 		// QLRM -> 데이터베이스에서 result된 결과를 자바클래스에 매핑해주는 라이브러리
 		JpaResultMapper result = new JpaResultMapper(); // QLRM 라이브러리따로 등록해야함
 		List<SubscribeDto> subscribeDtos = result.list(query, SubscribeDto.class);
-		System.out.println("111111111tqtqtqtqtqtq");
+		
 	for(SubscribeDto item : subscribeDtos) {
 		System.out.println(item.getProfileImageUrl());
 	}

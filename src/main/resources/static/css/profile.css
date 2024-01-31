@@ -357,6 +357,7 @@ font-size: 20px;
 }
 
 .modal-contents .contents .contents-body .contents-photo {
+  overflow: hidden;
 }
 
 .modal-contents .contents .contents-body .contents-photo img {
@@ -369,7 +370,7 @@ font-size: 20px;
   flex: 1;
   padding: 10px;
   color: black;
-  overflow-y: auto;
+  flex-direction: column;
 }
 
 .modal-contents .contents .contents-body .contents-details .post-content {
@@ -377,7 +378,8 @@ font-size: 20px;
   align-items: flex-start;
   background-color: transparent;
   color: #000;
-  font-size: 16px;
+  font-size: 25px;
+  font:  bold;
   padding: 0 15px;
   margin-bottom: 5px;
 }
@@ -390,11 +392,19 @@ font-size: 20px;
   font-size: 16px;
   padding: 0 15px;
   margin-bottom: 5px;
+  overflow-y: auto;
+}
+
+.modal-contents .contents .contents-body .contents-details .comment button {
+	border: none; 
+	color: blcak;
+	outline: none; background: #fff; cursor: pointer;
 }
 
 .modal-contents .contents .contents-body .contents-details .comments-icon {
   height: 40px;
   padding: 5px 0;  
+
 }
 
 .modal-contents .contents .contents-body .contents-details .comments-icon button {
@@ -403,6 +413,7 @@ font-size: 20px;
   font-size: 25px;
   border: 0;
   cursor: pointer;
+  margin-top: auto;
 }
 
 .modal-contents .contents .contents-body .contents-details .comments-icon button:first-child .active {
@@ -412,6 +423,7 @@ font-size: 20px;
 .modal-contents .contents .contents-body .contents-details .comments-input {
   display: flex;
   border-top: 1px solid #dbdbdb;
+  margin-top: auto;
 }
 
 .modal-contents .contents .contents-body .contents-details .comments-input input{

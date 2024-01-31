@@ -26,9 +26,15 @@ public class ImageService {
 
 	private final ImageRepository imageRepository;
 	
-	public Image 게시글상세보기(int imageId) {
+	public Image 게시글상세보기(int imageId, int principalId) {
 		Image images = imageRepository.findById(imageId).orElseThrow(()->{
 			throw new CustomApiException("찾을 수 없는 게시글입니다.");
+		});
+		images.setLikeCount(images.getLikes().size());
+		images.getLikes().forEach((like)->{
+			if(like.getUser().getId() == principalId) {
+				images.setLikeState(true);
+			}
 		});
 		return images;
 	}
