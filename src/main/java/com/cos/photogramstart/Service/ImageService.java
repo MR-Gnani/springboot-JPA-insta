@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cos.photogramstart.config.auth.PrincipalDetails;
 import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.domain.image.ImageRepository;
+import com.cos.photogramstart.handler.ex.CustomApiException;
 import com.cos.photogramstart.web.dto.image.ImageUploadDto;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,13 @@ import lombok.RequiredArgsConstructor;
 public class ImageService {
 
 	private final ImageRepository imageRepository;
+	
+	public Image 게시글상세보기(int imageId) {
+		Image images = imageRepository.findById(imageId).orElseThrow(()->{
+			throw new CustomApiException("찾을 수 없는 게시글입니다.");
+		});
+		return images;
+	}
 	
 	@Transactional(readOnly = true)
 	public List<Image> 인기사진() {

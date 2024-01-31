@@ -46,15 +46,60 @@ function contentsModalOpen() {
 }
 
 $.ajax({
-	url: ``
+	url: `/api/user/{imageId}/contents`,
+	dataType: "json"
 }).done(res=>{
-	
+	console.log(res);
+	let contentsItem = getContentsModalItem(image);
+	$("contentsModalList").append(contentsItem)
 }).fail(error=>{
-	
+	console.log("오류", error);
 })
 
-function getContentsModalItem() {
-	let item=``
+function getContentsModalItem(image) {
+	let item=`			
+			<div class="contents-header">
+				<span> ${image.user.username} </span>
+				<button onclick="modalClose()">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			
+			
+			<div class="contents-body" >
+			
+				
+				<div class="contents-photo">
+				  
+				<img src="/images/person.jpeg" >
+				</div>
+					
+				
+				<div class="contents-details">
+				
+					<div class="post-content">
+						<p>Your post content goes here...</p>
+					</div>
+					
+					<div class="comment">
+						<p>Comment 1</p>
+					</div>
+					        
+					<div class="comments-icon">
+						<button>
+							<i class="fas fa-heart active"  id="contentsLikeIcon-1" onclick="toggleLike()"></i>
+						</button>
+					</div>
+					
+					<span class="like"><b id="contentsLikeCount-1">3 </b>likes</span>
+					        
+					<div class="comments-input">
+						<input type="text" placeholder="댓글 달기..." id="CommentsInput-${image.id}" />
+						<button type="button" onClick="addComment(${image.id})">게시</button>
+					</div>			
+				</div>
+		</div>`
+		return item;
 }
 
 
