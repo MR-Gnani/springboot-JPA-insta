@@ -214,12 +214,10 @@ function addComment(imageId) {
 			  </div>
 			`;
 			commentList.prepend(content);
-		
 	}).fail(error=>{
 		console.log("오류", error.responseJSON.data.content);
 		alert(error.responseJSON.data.content);
 	});
-	
 	commentInput.val("");  // 인풋필드 비워줌
 }
 
@@ -297,7 +295,6 @@ function profileImageUpload(pageUserId, principalId) {
 	// console.log("principalId", principalId);
 	
 	// 다른 프로필 유저의 사진을 클릭했을때 프로필 변경 못하게 하는것
-	// 하지만 내생각에는 애초에 다른 회원의 프로필을 클릭했을 때 변경 모달을 호출 시키지 않고 사진만 응답시키고 싶음
 	if(pageUserId != principalId){
 		alert("프로필 사진을 수정할 수 없는 유저입니다.")
 		return;

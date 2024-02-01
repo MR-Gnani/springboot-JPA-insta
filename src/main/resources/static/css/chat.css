@@ -1,0 +1,96 @@
+@import "header.css";
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.chat-container {
+	display: flex;
+	padding-top: 54px;
+	height: 100vh;
+	overflow-y: hidden;
+}
+
+.chat-container .chatlist {
+    width: 30%;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.chat-container .chatlist .chatlist-top {
+    background-color: #ababac;
+  	height: 15%;
+}
+
+.chat-container .chatlist .chatlist-top .cl-top-username {
+	padding-top: 14px;
+	margin-left: 10px;
+	font-size: 25px;
+	font-weight: bold;
+	color: black;
+	overflow-y: hidden;
+}
+
+.chat-container .chatlist .chatlist-top .cl-message {
+	padding-top: 30px;
+	margin-left: 10px;
+	font-size: 15px;
+	color: black;
+}
+
+.chat-container .chatlist .chatlist-bottom {
+	background-color: yellow;
+	height: 85%;
+	overflow-y:auto;
+}
+
+.chat-container .chatroom {
+    width: 70%;
+}
+
+.chat-container .chatroom .chatroom-top {
+	background-color: red;
+	height: 10%
+}
+
+.chat-container .chatroom .chatroom-middle{
+	background-color: blue;
+	height: 80%
+}
+
+.chat-container .chatroom .chatroom-bottom{
+	background-color: green;
+	height: 10%
+}
+
+.chat-container .chatroom .chatroom-bottom .cr-bt-input {
+	padding: 18px;
+}
+
+.chat-container .chatroom .chatroom-bottom .cr-bt-input .input-container {
+	display: flex;
+	align-items: stretch;
+}
+
+.chat-container .chatroom .chatroom-bottom .cr-bt-input .input-container input {
+	flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.chat-container .chatroom .chatroom-bottom .cr-bt-input .input-container button {
+	height: 100%;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+}
