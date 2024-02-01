@@ -50,6 +50,36 @@
   cursor: pointer;
 }
 
+.modal-info {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-info .modal {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.modal-info .modal button {
+  border: 0;
+  background-color: transparent;
+  height: 48px;
+  cursor: pointer;
+}
+
+.modal-info .modal button:not(:last-child) {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+
 @media screen and (max-width: 935px) {
   .header .container {
     width: 100%;
