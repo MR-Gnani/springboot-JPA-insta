@@ -56,6 +56,9 @@
 					<li class= "navi-item"><a onclick="popup('.modal-info')">
 							<i class="fas fa-cog"></i>
 						</a></li>
+					<li class="navi-item"><a href="/user/chat">
+							<i class="fa fa-paper-plane"></i>
+						</a></li>
 				</ul>
 			</nav>
 		</div>

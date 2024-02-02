@@ -19,8 +19,8 @@ body {
 }
 
 .chat-container .chatlist .chatlist-top {
-    background-color: #ababac;
   	height: 15%;
+  	border-bottom: 1px solid #ccc;
 }
 
 .chat-container .chatlist .chatlist-top .cl-top-username {
@@ -40,28 +40,156 @@ body {
 }
 
 .chat-container .chatlist .chatlist-bottom {
-	background-color: yellow;
 	height: 85%;
+	overflow: hidden;
 	overflow-y:auto;
 }
 
+.chat-container .chatlist .chatlist-bottom .cl-profile {  
+    height: 80px;
+    display: flex;
+    border-bottom: 1px solid #ccc; /* 나중에 없애면 됨 */
+}
+
+.chat-container .chatlist .chatlist-bottom .cl-profile .cl-profile-left {
+	width: 22%;
+	height: 100%;
+	display: flex;
+}
+
+.chat-container .chatlist .chatlist-bottom .cl-profile .cl-profile-left .cl-profile-imagebox {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: auto;
+  align-items: center; 
+  justify-content: center; 
+  display: flex;
+}
+
+.chat-container .chatlist .chatlist-bottom .cl-profile .cl-profile-left .cl-profile-imagebox img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.chat-container .chatlist .chatlist-bottom .cl-profile .cl-profile-right {
+	width: 78%;
+	padding-left: 10px;
+	height: 100%;
+}
+
+.chat-container .chatlist .chatlist-bottom .cl-profile .cl-profile-right .cl-proflie-username {
+	font-size: 20px;
+	color: black;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    height: 100%;
+}
+
+/* 오른쪽 채팅방 */
 .chat-container .chatroom {
     width: 70%;
 }
 
 .chat-container .chatroom .chatroom-top {
-	background-color: red;
-	height: 10%
+	height: 12%;
+	border-bottom: 1px solid #ccc;
+}
+
+.chat-container .chatroom .chatroom-top .cr-profile{
+	height: 80px;
+    display: flex;
+}
+
+.chat-container .chatroom .chatroom-top .cr-profile .cr-profile-left{
+	width: 12%;
+	height: 100%;
+	display: flex;
+}
+
+.chat-container .chatroom .chatroom-top .cr-profile .cr-profile-left .cr-profile-imagebox{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: auto;
+  align-items: center; 
+  justify-content: center; 
+  display: flex;
+}
+
+.chat-container .chatroom .chatroom-top .cr-profile .cr-profile-left .cr-profile-imagebox img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.chat-container .chatroom .chatroom-top .cr-profile .cr-profile-right {
+	width: 88%;
+	height: 100%;
+}
+
+.chat-container .chatroom .chatroom-top .cr-profile .cr-profile-right .cr-profile-username{
+	font-size: 25px;
+	color: black;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    height: 100%;
 }
 
 .chat-container .chatroom .chatroom-middle{
-	background-color: blue;
-	height: 80%
+	height: 76%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	overflow-y: auto;
 }
 
+.chat-container .chatroom .chatroom-middle .cr-m-time{
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.chat-container .chatroom .chatroom-middle .chatting-test .cr-m-mymessage {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  width: auto;
+  margin-bottom: 10px; /* 아래 여백 설정 */
+}
+
+.chat-container .chatroom .chatroom-middle .chatting-test .cr-m-mymessage .mm-message-box {
+  background-color: #5395e9; /* 예시로 파란색 배경을 설정하였습니다. */
+  padding: 10px; /* 내용과 테두리 사이 여백 설정 */
+  max-width: 70%; /* 최대 넓이 설정 */
+  border-radius: 10px; /* 테두리를 둥글게 설정 */
+  margin-right: 10px;
+  color: white;
+}
+
+.chat-container .chatroom .chatroom-middle .chatting-test .cr-m-message {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  width: auto;
+  margin-left: 10px;
+  margin-bottom: 10px; /* 아래 여백 설정 */
+}
+
+.chat-container .chatroom .chatroom-middle .chatting-test .cr-m-message .m-message-box {
+  background-color: #efefef; /* 예시로 하늘색 배경을 설정하였습니다. */
+  padding: 10px; /* 내용과 테두리 사이 여백 설정 */
+  border-radius: 10px; /* 테두리를 둥글게 설정 */
+  max-width: 70%; /* 최대 넓이 설정 */
+  color: black;
+}
+
+
 .chat-container .chatroom .chatroom-bottom{
-	background-color: green;
-	height: 10%
+	height: 12%
 }
 
 .chat-container .chatroom .chatroom-bottom .cr-bt-input {
@@ -77,10 +205,10 @@ body {
 	flex: 1;
     height: 100%;
     box-sizing: border-box;
-    border: none;
+    border: 1px solid gray; 
     outline: none;
     padding: 8px;
-    border-radius: 10px;
+    border-radius: 23px;
 }
 
 .chat-container .chatroom .chatroom-bottom .cr-bt-input .input-container button {
@@ -92,5 +220,5 @@ body {
     background-color: #4CAF50;
     color: white;
     padding: 8px 16px;
-    border-radius: 10px;
+    border-radius: 23px;
 }
