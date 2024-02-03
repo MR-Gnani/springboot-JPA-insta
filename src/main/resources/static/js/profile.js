@@ -182,7 +182,7 @@ function toggleLike(imageId) {
 function addComment(imageId) {
 
 	let commentInput = $(`#CommentsInput-${imageId}`);
-	let commentList = $(`#commentList-${imageId}`);
+	let commentList = $('.commentList');
 
 	let data = {
 		imageId:  imageId,
@@ -201,9 +201,24 @@ function addComment(imageId) {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json"
 	}).done(res=>{
-		// console.log("성공", res);
 		
-			let comment = res.data;
+		
+	/*		$.ajax({
+		url: `/api/user/${imageId}/contents`,
+		dataType: "json"
+	}).done(res=>{
+		console.log(res);
+		let image = res.data;
+		console.log('===image===');
+	    console.log(image);
+	}).fail(error=>{
+		console.log("오류", error);
+	}); */
+		
+		
+		 console.log("성공", res);
+		
+			 let comment = res.data;
 		
 			let content = `
 			  <div class="comment" id="contentsCommentItem-${comment.id}"> 
@@ -213,7 +228,7 @@ function addComment(imageId) {
 			    <button onclick="deleteComment(${comment.id})"><i class="fas fa-times"></i></button>   
 			  </div>
 			`;
-			commentList.prepend(content);
+			commentList.prepend(content); 
 	}).fail(error=>{
 		console.log("오류", error.responseJSON.data.content);
 		alert(error.responseJSON.data.content);

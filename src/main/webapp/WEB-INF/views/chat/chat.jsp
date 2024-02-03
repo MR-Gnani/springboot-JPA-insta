@@ -112,18 +112,6 @@
 					<div class= "cl-proflie-username"> YD Backend Engineer </div>
 				</div>
 			</div>
-			
-			<div class="cl-profile" id="test-10">
-				<div class= "cl-profile-left">
-					<div class="cl-profile-imagebox">
-						<img class="cl-profile-image" src="/images/basicprofile.png"/>
-					</div>
-				</div>
-				<div class= "cl-profile-right">
-					<div class= "cl-proflie-username"> YD Backend Engineer </div>
-				</div>
-			</div>
-		</div>
 	</section>
 	
 	<!-- 디엠창 오른쪽 -->

@@ -18,7 +18,13 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-
+	
+		<!-- 웹소켓 통신 라이브러리 -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-websocket</artifactId>
+	</dependency>
+	
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
 	<dependency>
 	    <groupId>org.springframework.boot</groupId>
