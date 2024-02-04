@@ -8,9 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ChatController {
 
-	@GetMapping("/user/chat")
-	public String chat() {
-		return "chat/chat";
+	@RequestMapping("/user/chat")
+	public ModelAndView chat() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("chat/chat");
+		return mv;
 	}
 	
 	@RequestMapping("user/chating")

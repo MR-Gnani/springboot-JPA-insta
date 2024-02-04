@@ -57,12 +57,17 @@
 		}
 		
 		ws.onmessage = function(data) {
+			
+			console.log('====onmessage====')
+			console.log(data);
+			
 			var msg = data.data;
 			if(msg != null && msg.trim() != ''){
 				$("#chating").append("<p>" + msg + "</p>");
 			}
 		}
 
+		// 엔터를 누르면 전송 하게 함
 		document.addEventListener("keypress", function(e){
 			if(e.keyCode == 13){ //enter press
 				send();
@@ -70,6 +75,7 @@
 		});
 	}
 
+	// 필요없을 듯?
 	function chatName(){
 		var userName = $("#userName").val();
 		if(userName == null || userName.trim() == ""){
@@ -82,6 +88,7 @@
 		}
 	}
 
+	// 전송 기능
 	function send() {
 		var uN = $("#userName").val();
 		var msg = $("#chatting").val();
