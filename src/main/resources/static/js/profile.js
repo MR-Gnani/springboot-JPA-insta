@@ -201,30 +201,14 @@ function addComment(imageId) {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json"
 	}).done(res=>{
-		
-		
-	/*		$.ajax({
-		url: `/api/user/${imageId}/contents`,
-		dataType: "json"
-	}).done(res=>{
-		console.log(res);
-		let image = res.data;
-		console.log('===image===');
-	    console.log(image);
-	}).fail(error=>{
-		console.log("오류", error);
-	}); */
-		
-		
+			
 		 console.log("성공", res);
 		
 			 let comment = res.data;
 		
 			let content = `
 			  <div class="comment" id="contentsCommentItem-${comment.id}"> 
-			    <p>
-			      <b>${comment.user.username}</b>${comment.content}
-			    </p>	    
+			      <b><span class="user-username">${comment.user.username}</span> :</b>${comment.content}
 			    <button onclick="deleteComment(${comment.id})"><i class="fas fa-times"></i></button>   
 			  </div>
 			`;

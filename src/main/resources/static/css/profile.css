@@ -373,6 +373,7 @@
 }
 
 .modal-contents .contents .contents-body .contents-details .post-content {
+  height: 40px;
   justify-content: space-between;
   align-items: flex-start;
   background-color: transparent;
@@ -391,6 +392,11 @@
   font-size: 16px;
   padding: 0 15px;
   margin-bottom: 5px;
+  overflow-y: auto;
+}
+
+.modal-contents .contents .contents-body .contents-details .commentList {
+  height: 375px;
   overflow-y: auto;
 }
 
