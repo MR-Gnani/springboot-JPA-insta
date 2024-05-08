@@ -3,8 +3,6 @@ package com.cos.photogramstart.handler;
 import java.util.HashMap;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -40,7 +38,7 @@ public class SocketHandler extends TextWebSocketHandler{
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
-		// 소켓 연결
+		// 소켓 연결, "user/chat"으로 이동하면 소켓이 연결되고 세션을 받음
 		super.afterConnectionEstablished(webSocketSession);
 		System.out.println("소켓연결" + webSocketSession);
 		sessionMap.put(webSocketSession.getId(), webSocketSession);
@@ -58,7 +56,5 @@ public class SocketHandler extends TextWebSocketHandler{
 		sessionMap.remove(webSocketSession.getId());
 		super.afterConnectionClosed(webSocketSession, closeStatus);
 	}
-	
-	
 	
 }

@@ -48,7 +48,7 @@
 		<div class="chatroom-middle">
 			<!-- 시간 -->
 			<div class="cr-m-time"> 2024.02.02 (금) 15:44 </div>
-			<input type="hidden" id="sessionId" value="">
+			<input type="text" id="sessionId" value="">
 			<!-- 테스트 -->
 			<div class="chatting-test" id="chat-List">
 				<!-- 내가 쓴 메세지 -->

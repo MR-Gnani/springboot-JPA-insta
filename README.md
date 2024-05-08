@@ -1,5 +1,37 @@
 # 포토그램 - 인스타그램 클론 코딩
 
+# Demo
+[]()
+
+# 개발 목표 & 개발기간
+- 2024/01/10 - 2024/01/30
+
+- 인스타그램 기능을 참고한 클론 웹 사이트 제작(프론트&백엔드 프로젝트)
+- 회원가입 및 로그인 기능
+- 프로필 수정 기능
+- 게시글 작성(사진 첨부, 댓글 작성) 기능
+- 게시글 좋아요 및 인기 글 게시판 
+- 팔로워 팔로잉 관리 기능
+
+# 사용 기술
+- IDE : Eclipse, MySQL Workbench, Postman
+- Server : Apache Tomcat 9.0
+- lang : Java(JDK 11), JavaScript, HTML/CSS
+- DB : MySQL 8.0.33
+- 라이브러리 : JQuery, JSTL, Lombok, qlrm, WebSocket, Security Taglibs
+
+
+# Advanced Feature
+- 회원가입 기능
+
+![]()
+
+# 개선 사항
+- 메인 페이지에서도 유저 이름 클릭 시 프로필페이지로 이동 가능하게 수정(24/01/29 수정완)
+- 프로필페이지에서 게시글 클릭시 모달 창으로 내용 보여주기(24/02/01 수정완)
+- DM기능 구현하기
+
+
 ## 의존성
 
 - Sring Boot DevTools

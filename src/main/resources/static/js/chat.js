@@ -19,15 +19,14 @@ function wsEvt() {
 	}
 
 	ws.onmessage = function(data) {  
-		
-		
-			var msg = data.data;
+			console.log(data)
+			let msg = data.data;
 			if(msg != null && msg.trim() != ''){
-				var d = JSON.parse(msg);
+				let d = JSON.parse(msg);
 				
 				console.log(d);
-				if(d.type == "getId"){
-					var si = d.sessionId != null ? d.sessionId : "";
+				if(d.type == "getId"){ 
+					let si = d.sessionId != null ? d.sessionId : ""; //sessionId가 null이 아니면 d.sessionId가 null이면 빈 문자열이 할당
 					if(si != ''){
 						$("#sessionId").val(si); 
 					}
@@ -36,27 +35,14 @@ function wsEvt() {
 								let msgItem = getMsgItem(d.msg);
 									$("#chat-List").append(msgItem);
 					}else{
-						
 							let msgItem = getMsgOtherItem(d.msg);
 									$("#chat-List").append(msgItem);
-						}
-						
+					}
 				}else{
 					console.warn("unknown type!")
 				}
-		
-		
-		
-		
-		
-		/* console.log(data);
-		let msg = data.data;
-		let msgItem = getMsgItem(msg)
-		if(msg != null && msg.trim() != ''){ // msg가 비어있거나 공백이 아닐 경우
-			$("#chat-List").append(msgItem);
-		}*/
-}
-}
+			}
+	}
 
 	// 엔터를 누르면 전송 하게 함
 	document.addEventListener("keypress", function(e){
