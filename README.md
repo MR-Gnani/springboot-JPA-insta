@@ -22,9 +22,22 @@
 
 
 # Advanced Feature
-- 회원가입 기능
+- 로그인 및 회원가입, 회원정보 수정
 
-![]()
+<img src="src/main/resources/static/images/readme/insta1.png" width="200px" height="270px"></img><img src="src/main/resources/static/images/readme/insta1-1.png" width="200px" height="268px"></img><img src="src/main/resources/static/images/readme/insta3.png" width="370px" height="270px"></img>
+
+- Facebook 소셜 로그인
+
+<img src="src/main/resources/static/images/readme/insta1-2.png" width="500px" height="400px"></img>
+
+- 프로필 정보, 게시글 모달 창
+
+<img src="src/main/resources/static/images/readme/insta2.png" width="300px" height="400px"></img><img src="src/main/resources/static/images/readme/insta5.png" width="600px" height="400px"></img>
+
+- 팔로잉 기능
+
+<img src="src/main/resources/static/images/readme/insta4.png" width="400px" height="400px"></img>
+
 
 # 개선 사항
 - 메인 페이지에서도 유저 이름 클릭 시 프로필페이지로 이동 가능하게 수정(24/01/29 수정완)
@@ -34,7 +47,7 @@
 
 ## 의존성
 
-- Sring Boot DevTools
+- Spring Boot DevTools
 - Lombok
 - Spring Data JPA
 - MySQL DB Driver
